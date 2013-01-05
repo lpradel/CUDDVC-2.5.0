@@ -11,8 +11,8 @@ Thumbs.db
 *.ncb
 *.suo
 *.sln.docstates
-*.sdf
 *.opensdf
+*.sdf
 *.tlb
 *.tlh
 *.bak
