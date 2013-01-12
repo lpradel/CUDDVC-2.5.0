@@ -1,6 +1,5 @@
 CUDDVC-2.5.0
 ============
-------------
 
 This is a Windows port of the latest version (**2.5.0, Jan 2013**) of the
 popular C/C++ BDD/ADD/ZDD framework CUDD (*CU Decision Diagram Package*) by
@@ -16,7 +15,6 @@ previous versions of VS if there is enough interest.
 [^fn-cudd]: http://vlsi.colorado.edu/~fabio/CUDD/
 
 How to use CUDDVC-2.5.0
------------------------
 -----------------------
 
 1. Clone the repo.
