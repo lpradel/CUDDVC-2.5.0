@@ -1,8 +1,8 @@
 CUDDVC-2.5.0
 ============
 
-This is a Windows port of the latest version (**2.5.0, Jan 2013**) of the
-popular C/C++ BDD/ADD/ZDD framework CUDD (*CU Decision Diagram Package*) by
+This is a Windows port of the latest version ( **2.5.0, Jan 2013** ) of the
+popular C/C++ BDD/ADD/ZDD framework CUDD ( *CU Decision Diagram Package* ) by
 Fabio Somenzi.
 
 CUDD is available for free at [Fabio's website][^fn-cudd].
