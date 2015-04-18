@@ -575,6 +575,125 @@ BDD::IsZero() const
 
 } // BDD::IsZero
 
+BDD
+BDD::Then() const
+{
+	// check if node is complemented.
+	if (Cudd_IsComplement(node))
+	{/*
+	 * When node is complemented, Cudd_T calls Cudd_Regular internally,
+	 * which causes the resultant then node is regular. Therefore, we need
+	 complement result.
+	 */
+		return !BDD(p, Cudd_T(node));
+
+	}
+	else
+	{
+		return BDD(p, Cudd_T(node));
+	}
+} // BDD::Then()
+
+BDD
+BDD::Else() const
+{
+	/*
+	As same as Then(), when the node is complemented, we should complement
+	else node to get consistent result.
+	*/
+
+	if (Cudd_IsComplement(node))
+	{
+		return !BDD(p, Cudd_E(node));
+
+	}
+	else
+	{
+		return BDD(p, Cudd_E(node));
+	}
+
+} // BDD::Then()
+
+bool
+BDD::IsConstant() const
+{
+	return Cudd_IsConstant(node);
+} // BDD::IsConstant()
+
+bool
+BDD::IsComplement() const
+{
+	return Cudd_IsComplement(node);
+}
+
+BDD
+BDD::Regular() const
+{
+	return BDD(p, Cudd_Regular(node));
+}
+
+BDD
+BDD::CUDD_Not() const
+{
+	return !(*this);
+}
+
+/*
+bool BDD::IsOne() const
+{
+return !IsZero();
+}
+*/
+
+
+BDD
+BDD::TopVar() const
+{
+	// check if BDD is constant
+	if (Cudd_IsConstant(node))
+	{
+		std::cerr << "Constant is not expected in TopVar.\n";
+		exit(0);
+	}
+
+	int position;
+	if (Cudd_IsComplement(node))
+	{
+		position = cuddI(manager(), Cudd_Regular(node)->index);
+
+	}
+	else
+	{
+		position = cuddI(manager(), node->index);
+	}
+
+	return BDD(p, Cudd_bddIthVar(manager(), manager()->invperm[position]));
+}
+
+int
+BDD::Position() const
+{
+
+	// check if BDD is constant
+	if (Cudd_IsConstant(node))
+	{
+		std::cerr << "Constant is not expected in TopVar.\n";
+		exit(0);
+	}
+
+	int position;
+	if (Cudd_IsComplement(node))
+	{
+		position = cuddI(manager(), Cudd_Regular(node)->index);
+
+	}
+	else
+	{
+		position = cuddI(manager(), node->index);
+	}
+
+	return position;
+}
 
 // ---------------------------------------------------------------------------
 // Members of class ADD

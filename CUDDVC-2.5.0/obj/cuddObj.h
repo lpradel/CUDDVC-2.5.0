@@ -329,7 +329,15 @@ public:
     BDD zddIsop(const BDD& U, ZDD* zdd_I) const;
     BDD Isop(const BDD& U) const;
     ZDD PortToZdd() const;
-
+    BDD Then() const;
+    BDD Else() const;
+    bool IsConstant() const;
+    bool IsComplement() const;
+    BDD Regular() const;
+    BDD CUDD_Not() const; // equivalent to ! operator
+    //bool BDD::IsOne() const;
+    BDD TopVar() const;
+    int Position() const;
 }; // BDD
 
 
